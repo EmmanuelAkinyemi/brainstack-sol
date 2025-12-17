@@ -95,6 +95,9 @@ export async function OPTIONS(req: Request) {
 // ==========================================
 // 3. POST REQUEST (Builds the Transaction)
 // ==========================================
+// ==========================================
+// 3. POST REQUEST (Builds the Transaction)
+// ==========================================
 export async function POST(req: Request, props: Props) {
   try {
     const requestUrl = new URL(req.url);
@@ -145,6 +148,7 @@ export async function POST(req: Request, props: Props) {
     // 7. Serialize and return the transaction
     const payload: ActionPostResponse = await createPostResponse({
       fields: {
+        type: 'transaction',  // <--- FIXED: Added this required property
         transaction,
         message: `Answer Submitted!`, // This appears as a toast message in the wallet
       },
