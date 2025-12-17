@@ -1,20 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import AppWalletProvider from "@/components/AppWalletProvider";
 import { Navbar } from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+// 1. Configure the fonts
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({ 
+  subsets: ["latin"], 
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "BrainStack | Get Paid to Learn",
+  title: "BrainStack | The Knowledge Market",
   description: "Decentralized Study Group & Bounties on Solana",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-black text-white antialiased`}>
+    <html lang="en" className="dark scroll-smooth">
+      <body className={`${inter.variable} ${playfair.variable} bg-[#020202] text-white antialiased font-sans`}>
         <AppWalletProvider>
           <Navbar />
           {children}
